@@ -5,6 +5,7 @@ on:
     branches: [main]
 jobs:
   archive-build-down:
+    runs-on: ubuntu-latest
     steps:
       run: mkdir down
 
