@@ -2,18 +2,20 @@ name: publish artifactory to the project
 
 on: 
   push: 
-    branches: [main]
+    branches: [ main ]
 jobs:
   archive-build-down:
     runs-on: ubuntu-latest
     steps:
-      run: mkdir down
-
-      run: |
-        cd down
-        echo hello > hello.html
-        cd ..
-      uses: actions/upload-artifactory@v2
-      with:
-        name: assets-down
-        path: down
+      - name: Step 1: Create dir
+        run: mkdir down
+      - name: Step 2: Create file
+        run: |
+          cd down
+          echo hello > hello.html
+          cd ..
+      - name: Step 3 Upload artifacts
+        uses: actions/upload-artifactory@v2
+        with:
+          name: assets-down
+          path: down
