@@ -1,0 +1,16 @@
+name: publish artifactory to the project
+
+on: 
+  push: 
+    branches: [main]
+jobs:
+  run: mkdir down
+  
+  run: |
+    cd down
+    echo hello > hello.html
+    cd ..
+  uses: actions/upload-artifactory@v2
+  with:
+    name: assets-down
+    path: down
